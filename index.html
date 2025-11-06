@@ -3,199 +3,563 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feel Like A Robot? Start Feeling Alive Again</title>
+    <title>Flex & Paint - Art & Fitness for Expression & Embodiment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #fafafa;
+            color: #121212;
+            background-color: #F5F5F5;
         }
-        
+
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #F5F5F5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-nav .name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #121212;
+        }
+
+        .top-nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .top-nav-links a {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: #121212;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav-links a:hover {
+            color: #000;
+        }
+
+        .top-nav-links a i {
+            font-size: 1.2rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 8px;
+        }
+
+        h2 {
+            letter-spacing: 2px;
+        }
+
         .container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px;
         }
-        
-        header {
+
+        /* Header */
+        .header {
             text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #121212;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Video Section */
+        .video-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Problem Statement */
+        .problem-statement {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .problem-statement p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #121212;
+        }
+
+        /* Offerings Section */
+        .offerings-section {
+            background-color: #F5F5F5;
+            padding: 80px 20px;
+            margin-bottom: 0;
+        }
+
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+
+        .offering-item {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #EAE6E1;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .offering-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #121212;
+        }
+
+        .offerings-description {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .offerings-description p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #121212;
+        }
+
+        /* Outcomes Section */
+        .outcomes-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .outcomes-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #121212;
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
             margin-bottom: 40px;
         }
-        
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            color: #1a1a1a;
-        }
-        
-        .subhead {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        .benefits {
-            background: white;
+
+        .outcome-column {
+            background-color: #EAE6E1;
             padding: 30px;
             border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .benefits ul {
+
+        .outcome-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #121212;
+            font-weight: 600;
+        }
+
+        .outcome-column ul {
             list-style: none;
-            margin: 20px 0;
         }
-        
-        .benefits li {
-            padding: 12px 0;
-            padding-left: 30px;
+
+        .outcome-column li {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #121212;
+            padding-left: 20px;
             position: relative;
         }
-        
-        .benefits li:before {
-            content: "✓";
+
+        .outcome-column li:before {
+            content: "•";
             position: absolute;
             left: 0;
-            color: #4CAF50;
+            color: #121212;
             font-weight: bold;
-            font-size: 1.2em;
         }
-        
-        .cta-section {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 8px;
+
+        /* Calendly Section */
+        .calendly-section {
+            background-color: #F5F5F5;
+            padding: 80px 20px;
+        }
+
+        .calendly-section h2 {
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 2.5rem;
             margin-bottom: 40px;
+            color: #121212;
         }
-        
-        .cta-section h2 {
+
+        .calendly-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guarantee-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #121212;
+        }
+
+        .guarantee-section p {
+            font-size: 1.15rem;
+            line-height: 1.8;
             margin-bottom: 20px;
-            font-size: 1.5em;
+            color: #121212;
         }
-        
-        input[type="email"] {
-            width: 100%;
-            padding: 15px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 4px;
+
+        /* Lead Magnet Section */
+        .lead-magnet-section {
+            background-color: #121212;
+            padding: 80px 20px;
+        }
+
+        .lead-magnet-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #F5F5F5;
+        }
+
+        .lead-magnet-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .lead-magnet-section .formkit-form {
+            margin: 0 auto;
+        }
+
+        .lead-magnet-section .formkit-alert {
+            background: #f9fafb;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 0 auto 20px;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .lead-magnet-section .formkit-alert-error {
+            background: #fde8e2;
+            border-color: #f2643b;
+            color: #ea4110;
+        }
+
+        .lead-magnet-section .formkit-submit:hover {
+            background-color: #2a2a2a;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #121212;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 30px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #121212;
             margin-bottom: 15px;
         }
-        
-        button {
-            width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #121212;
         }
-        
-        button:hover {
-            background: #45a049;
-        }
-        
-        .secondary-cta {
-            background: #f5f5f5;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            border-top: 3px solid #ddd;
-        }
-        
-        .secondary-cta h3 {
-            margin-bottom: 15px;
-            color: #333;
-        }
-        
-        .secondary-cta p {
-            margin-bottom: 20px;
-            color: #666;
-        }
-        
-        .secondary-btn {
-            background: #2196F3;
-            display: inline-block;
-            padding: 12px 30px;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        
-        .secondary-btn:hover {
-            background: #0b7dda;
-        }
-        
-        .disclaimer {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: #999;
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 15px 20px;
             }
-            
-            .container {
-                padding: 20px 15px;
+
+            .top-nav .name {
+                font-size: 0.9rem;
+            }
+
+            .top-nav-links {
+                gap: 20px;
+            }
+
+            .top-nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header h2 {
+                font-size: 1.2rem;
+            }
+
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offerings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lead-magnet-section .formkit-fields {
+                flex-direction: column !important;
+            }
+
+            .lead-magnet-section .formkit-field {
+                margin-bottom: 15px;
+            }
+
+            .lead-magnet-section .formkit-submit {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Feel Like A Robot?<br>Here's How To Start Feeling Alive Again</h1>
-            <p class="subhead">Get the free 3-practice starter kit for analytical minds who feel emotionally numb</p>
-        </header>
-        
-        <div class="benefits">
-            <h2>What's inside the guide:</h2>
-            <ul>
-                <li>Why you feel disconnected (the analytical mind trap)</li>
-                <li>The 3 daily practices that bring you back to life</li>
-                <li>How to start today (even if you're skeptical)</li>
-            </ul>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="name">KEVIN KOZA</div>
+        <div class="top-nav-links">
+            <a href="#program">PROGRAM</a>
+            <a href="https://www.instagram.com/koza.kevin" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
         </div>
-        
-        <div class="cta-section">
-            <h2>Get Your Free Guide</h2>
-            
-            <!-- REPLACE THIS WITH YOUR CONVERTKIT FORM EMBED -->
-            <form action="YOUR_CONVERTKIT_FORM_ACTION" method="post">
-                <input type="email" name="email_address" placeholder="Your email address" required>
-                <button type="submit">Send Me The Free Guide</button>
-            </form>
-            <!-- END CONVERTKIT FORM -->
-            
-        </div>
-        
-        <div class="secondary-cta">
-            <h3>Already know you need more than a guide?</h3>
-            <p>I'm opening a founding cohort starting soon. 8 weeks, small group, live calls + daily practices. $297.</p>
-            <p>If you're serious about transformation and ready to commit, let's talk.</p>
-            <a href="YOUR_CALENDLY_LINK" class="secondary-btn">Book A 15-Minute Call</a>
-            <p class="disclaimer">(Not ready? Get the free guide above first.)</p>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Flex & Paint</h1>
+        <h2>Art & Fitness for Expression & Embodiment</h2>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-section">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/R_gEPmLi7Fw?start=837" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
+
+    <!-- Problem Statement -->
+    <div class="problem-statement">
+        <p>If you struggle with anxiety or disconnection from your body, I want to work with you.</p>
+        <p>I used to think that I was robotic. I put labels on myself-- anxious, introverted, dissociated. I thought that there were levels to emotion that I wasn't able to feel and that something was irrevocably broken.</p>
+        <p>I later discovered the practice that I want to share with you-- what I was missing was an embodiment practice and an expression practice.</p>
+    </div>
+
+    <!-- Offerings Section -->
+    <div class="offerings-section" id="program">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 60px; color: #121212;">PROGRAM</h2>
+        <div class="offerings-grid">
+            <div class="offering-item">
+                <h3>8 Weeks of Online Lessons and Exercises</h3>
+            </div>
+            <div class="offering-item">
+                <h3>Weekly Group Calls</h3>
+            </div>
+            <div class="offering-item">
+                <h3>Community and Accountability</h3>
+            </div>
+            <div class="offering-item">
+                <h3>Individual Guidance</h3>
+            </div>
+        </div>
+        
+        <div class="offerings-description">
+            <p>Flex and Paint is not quite art therapy, and it isn't quite personal training-- but you'll receive the benefits of both.</p>
+            <p>By combining an artistic practice and a fitness practice, you're tapping into the mental health benefits of both expression and embodiment.</p>
+            <p>You don't need to be artistic nor in good shape to get the benefits-- I want to be clear that nothing about Flex and Paint requires you to be fit or arty. You can immediately benefit from expression and embodiment through a series of exercises that will compound on each other.</p>
+        </div>
+    </div>
+
+    <!-- Outcomes Section -->
+    <div class="outcomes-section">
+        <h2>OUTCOMES</h2>
+        <div class="outcomes-grid">
+            <div class="outcome-column">
+                <h3>Primary Outcomes</h3>
+                <ul>
+                    <li>Reduce anxiety</li>
+                    <li>Combat dissociation</li>
+                    <li>Build confidence</li>
+                </ul>
+            </div>
+            <div class="outcome-column">
+                <h3>Secondary Outcomes</h3>
+                <ul>
+                    <li>Reduced screen addiction</li>
+                    <li>Expanded body awareness</li>
+                </ul>
+            </div>
+            <div class="outcome-column">
+                <h3>Tertiary Outcomes</h3>
+                <ul>
+                    <li>Fundamental fitness habit and early-stage results</li>
+                    <li>Foundational artistic practice</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendly Section -->
+    <div class="calendly-section">
+        <h2>SCHEDULE A CALL</h2>
+        <div class="calendly-container">
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/kev-kevinkoza/flex-and-paint-discovery" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
+        </div>
+    </div>
+
+    <!-- Guarantee Section -->
+    <div class="guarantee-section">
+        <h2>GUARANTEE</h2>
+        <p>My entire aim is to reduce your anxiety, stop you from dissociating, and connect you to your emotions and purpose.</p>
+        <p>If you feel that we aren't making progress to achieving these outcomes by the 3rd week of the program, send me an email for a full refund-- even if it's at the very end of the program.</p>
+    </div>
+
+    <!-- Lead Magnet Section -->
+    <div class="lead-magnet-section">
+        <h2>Get My Free Anxiety-Mitigation Guide</h2>
+        <div class="lead-magnet-container">
+            <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+            <form action="https://app.kit.com/forms/8745721/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8745721" data-uid="6063adf2f7" data-format="inline" data-version="5" min-width="400 500 600 700 800">
+                <div class="formkit-background" style="opacity: 0.2;"></div>
+                <div data-style="clean">
+                    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                    <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields" style="display:flex;flex-wrap:wrap;max-width:600px;margin:0 auto;">
+                        <div class="formkit-field" style="flex:1 0 auto;">
+                            <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Your email address" required="" type="email" style="color:#121212;border-color:#e0e0e0;border-radius:4px;font-weight:400;padding:15px;font-size:16px;">
+                        </div>
+                        <button data-element="submit" class="formkit-submit formkit-submit" style="color:#F5F5F5;background-color:#121212;border-radius:4px;font-weight:600;padding:15px 30px;font-size:16px;cursor:pointer;border:none;flex:0 0 auto;">
+                            <div class="formkit-spinner">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <span>Get the Guide</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>FAQ</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Why are you doing this?</div>
+            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What will I learn how to paint? Why painting?</div>
+            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do I need materials?</div>
+            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Will I get jacked?</div>
+            <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+        </div>
+    </div>
+
 </body>
 </html>
