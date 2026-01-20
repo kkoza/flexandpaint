@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flex & Paint - Art & Fitness for Expression & Embodiment</title>
+    <title>Flex & Paint - A Fitness and Art Practice for Embodiment and Expression</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Calendly integration -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
     <style>
         * {
             margin: 0;
@@ -22,104 +26,50 @@
             background-color: #F5F5F5;
         }
 
-        /* Top Navigation */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #F5F5F5;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .top-nav .name {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #121212;
-        }
-
-        .top-nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .top-nav-links a {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-decoration: none;
-            color: #121212;
-            transition: color 0.3s ease;
-        }
-
-        .top-nav-links a:hover {
-            color: #000;
-        }
-
-        .top-nav-links a i {
-            font-size: 1.2rem;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3 {
             font-family: 'Barlow Condensed', sans-serif;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
-        h1 {
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
             text-transform: uppercase;
             letter-spacing: 8px;
-        }
-
-        h2 {
-            letter-spacing: 2px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 60px 20px 20px;
-        }
-
-        .header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #111;
-        }
-
-        .header h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
+            margin-bottom: 15px;
             color: #121212;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
+            line-height: 1;
         }
 
-        /* Video Container */
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto 40px;
+        .hero h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        /* Video Section */
+        .video-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
             padding: 0 20px;
         }
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .video-wrapper iframe {
@@ -131,561 +81,489 @@
             border: none;
         }
 
-        /* Problem Statement */
-        .problem-statement {
+        /* Testimonial Quote */
+        .testimonial-quote {
             max-width: 800px;
-            margin: 40px auto 80px;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
-        .problem-statement p {
-            font-size: 1.25rem;
+        .quote-box {
+            background: #fff;
+            padding: 40px;
+            border-left: 5px solid #121212;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.2rem;
             line-height: 1.8;
+            color: #121212;
             margin-bottom: 20px;
-            color: #121212;
         }
 
-        /* Method Section */
-        .method-section {
-            background-color: #EAE6E1;
-            padding: 80px 20px;
-            margin-bottom: 0;
-        }
-
-        .method-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #121212;
-        }
-
-        .method-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .method-content p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #121212;
-        }
-
-        /* Offerings Section */
-        .offerings-section {
-            background-color: #F5F5F5;
-            padding: 80px 20px;
-            margin-bottom: 0;
-        }
-
-        .offerings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto 40px;
-        }
-
-        .offering-item {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #EAE6E1;
-            border-radius: 8px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .offering-item h3 {
-            font-size: 1.1rem;
+        .quote-box .author {
+            font-family: 'Barlow Condensed', sans-serif;
             font-weight: 600;
+            font-size: 1rem;
+            color: #666;
+            text-align: right;
+        }
+
+        .quote-box .author a {
             color: #121212;
+            text-decoration: none;
+            border-bottom: 2px solid #121212;
+            transition: opacity 0.3s ease;
         }
 
-        .offerings-description {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .offerings-description p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #121212;
-        }
-
-        /* Outcomes Section */
-        .outcomes-section {
-            padding: 0px 20px 0px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .outcomes-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: #121212;
-        }
-
-        .outcomes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .outcome-column {
-            background-color: #EAE6E1;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .outcome-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #121212;
-            font-weight: 600;
-        }
-
-        .outcome-column ul {
-            list-style: none;
-        }
-
-        .outcome-column li {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: #121212;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .outcome-column li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #121212;
-            font-weight: bold;
+        .quote-box .author a:hover {
+            opacity: 0.7;
         }
 
         /* CTA Section */
         .cta-section {
-            background-color: #F5F5F5;
+            background-color: #121212;
             padding: 80px 20px;
+            text-align: center;
         }
 
         .cta-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #121212;
-        }
-
-        .cta-intro {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 60px;
-            color: #121212;
-        }
-
-        .cta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cta-option {
-            background-color: #EAE6E1;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .cta-option h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #121212;
-        }
-
-        .cta-option p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #121212;
-        }
-
-        .lead-form-wrapper {
-            margin-top: 20px;
-        }
-
-        .lead-form-wrapper .formkit-submit:hover {
-            background-color: #2a2a2a;
-        }
-
-        /* Guarantee Section */
-        .guarantee-section {
-            padding: 0px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .guarantee-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #121212;
-        }
-
-        .guarantee-section p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #121212;
-        }
-
-        /* Lead Magnet Section */
-        .lead-magnet-section {
-            background-color: #121212;
-            padding: 80px 20px;
-        }
-
-        .lead-magnet-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
             color: #F5F5F5;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
         }
 
-        .lead-magnet-container {
+        .cta-section p {
+            color: #ccc;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
             max-width: 700px;
             margin: 0 auto;
         }
 
-        .lead-magnet-section .formkit-form {
+        .cta-btn {
+            display: inline-block;
+            padding: 20px 40px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+        }
+
+        .cta-btn-primary {
+            background-color: #F5F5F5;
+            color: #121212;
+        }
+
+        .cta-btn-primary:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .cta-btn-secondary {
+            background-color: transparent;
+            color: #F5F5F5;
+            border: 2px solid #F5F5F5;
+        }
+
+        .cta-btn-secondary:hover {
+            background-color: #F5F5F5;
+            color: #121212;
+            transform: translateY(-2px);
+        }
+
+        /* What People Are Saying Section */
+        .outcomes-section {
+            padding: 80px 20px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .lead-magnet-section .formkit-alert {
-            background: #f9fafb;
-            border: 1px solid #e3e3e3;
-            border-radius: 5px;
-            padding: 12px;
-            margin: 0 auto 20px;
+        .outcomes-section h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             text-align: center;
-            max-width: 600px;
+            margin-bottom: 50px;
+            color: #121212;
         }
 
-        .lead-magnet-section .formkit-alert-error {
-            background: #fde8e2;
-            border-color: #f2643b;
-            color: #ea4110;
+        .outcomes-list {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
         }
 
-        .lead-magnet-section .formkit-submit:hover {
-            background-color: #2a2a2a;
+        .outcomes-list h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #121212;
+            letter-spacing: 1px;
+        }
+
+        .outcomes-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .outcomes-list ul li {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            color: #121212;
+        }
+
+        .outcomes-list ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #121212;
         }
 
         /* FAQ Section */
         .faq-section {
-            padding: 40px 20px;
-            max-width: 800px;
+            background-color: #fff;
+            padding: 80px 20px;
+        }
+
+        .faq-container {
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .faq-section h2 {
-            text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 50px;
             color: #121212;
         }
 
         .faq-item {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 30px;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
+            background: #F5F5F5;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .faq-question {
-            font-size: 1.3rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.4rem;
             font-weight: 600;
             color: #121212;
-            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #e8e8e8;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            font-weight: 400;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
         }
 
         .faq-answer {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
             color: #121212;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 30px;
+        }
+
+        .faq-answer.active {
+            max-height: 1000px;
+            padding: 0 30px 25px 30px;
+        }
+
+        .faq-answer p {
+            margin-bottom: 15px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer a {
+            color: #121212;
+            text-decoration: underline;
+        }
+
+        /* Video Testimonials Section */
+        .testimonials-section {
+            padding: 80px 20px;
+            background-color: #EAE6E1;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-section h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #121212;
+        }
+
+        .testimonials-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-video {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-video h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #121212;
+            letter-spacing: 1px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .top-nav {
-                padding: 15px 20px;
-            }
-
-            .top-nav .name {
-                font-size: 0.9rem;
-            }
-
-            .top-nav-links {
-                gap: 20px;
-            }
-
-            .top-nav-links a {
-                font-size: 0.8rem;
-            }
-
-            .header h1 {
+            .hero h1 {
                 font-size: 2.5rem;
+                letter-spacing: 4px;
             }
 
-            .header h2 {
-                font-size: 1.2rem;
+            .hero h2 {
+                font-size: 1.1rem;
             }
 
-            .outcomes-grid {
-                grid-template-columns: 1fr;
+            .cta-buttons {
+                flex-direction: column;
             }
 
-            .offerings-grid {
-                grid-template-columns: 1fr;
+            .cta-btn {
+                width: 100%;
+                max-width: 400px;
             }
 
-            .cta-grid {
-                grid-template-columns: 1fr;
+            h2 {
+                font-size: 2rem !important;
             }
 
-            .cta-option {
-                padding: 30px 20px;
+            .quote-box {
+                padding: 25px;
+            }
+
+            .quote-box blockquote {
+                font-size: 1.05rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-        <div class="name">KEVIN KOZA</div>
-        <div class="top-nav-links">
-            <a href="#program">PROGRAM</a>
-            <a href="#schedule">SCHEDULE</a>
-            <a href="#faq">FAQ</a>
-            <a href="https://www.instagram.com/koza.kevin" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        </div>
-    </nav>
 
-    <!-- Header -->
-    <div class="header">
-        <h1>Flex & Paint</h1>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>FLEX & PAINT</h1>
         <h2>A fitness and art practice for embodiment and expression</h2>
     </div>
 
-    <!-- Video Section -->
-    <div class="video-container">
+    <!-- VSL Video -->
+    <div class="video-section">
         <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/pmmHXfU-LZI" 
-                title="Flex & Paint Introduction" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/pmmHXfU-LZI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- Problem Statement -->
-    <div class="problem-statement">
-        <p>I used to think of myself as robotic; I had running thoughts, some amount of disconnection, and a perceived lack of emotional depth. These impacted my confidence, consistency with healthy practices, and making progress on my goals in life.</p>
-        <p><span style="font-style: italic">I later discovered the practice that I want to share with you--</span> what I was missing was a practice to live my body and a way to express myself.</p>
-        <p>Even better, I found that these two practices did not live in isolation; they compounded when combined.</p>
-        <p>Flex &amp; Paint works for those of us who want to get out of our heads, build fitness consistency without it feeling like a chore, and to learn about making art as an output of the body, not the brain.</p>
-    </div>
-
-    <!-- The Method Section -->
-    <div class="method-section">
-        <h2>THE METHOD</h2>
-        <div class="method-content">
-            <p>Many common approaches feel like temporary fixes, or they're hard to stick to long-term.</p>
-            <p>You might have tried meditation, or you think that fitness alone is enough for embodiment. Perhaps with an artistic practice you become more expressive, but it doesn't do much for running thoughts or confidence.</p>
-            <p>I propose an alternative that's inherently rewarding. It isn't an immediate fix (rewiring our patterns takes time), but the practice of getting in your body and making it enjoyable <span style="font-style: italic;">today</span> is enough to put you on the path for sustainable change. <span style="">And you'll see results in your body and your creativity.</span></p>
-            <p>Here's what I discovered: when you alternate between physical movement and creative expression, something unique happens: you enter a flow state where you're entirely present in your body <span style="font-style: italic">and</span> you're making positive influence on your environment. The momentum of one builds on the other.</p>
-            <p>💪 Fitness approached by counting reps and tracking metrics keeps you in your head.</p>
-            <p>🎨 People teach art in ways overly cerebral and technical.</p>
-            <p>My approach to both art and fitness has <span style="font-weight: bold">never</span> been about objective measures or technique. I've been able to help myself and my clients make progress in both domains through the <span style="font-style: italic">explicit emphasis on subjective experience--</span> how we feel <span style="font-style: italic">while</span> doing the act.</p>
-            <p>When combined, <span style="font-weight: bold">with a focus on feeling and subjective experience</span>, they create a practice that pulls you completely into the present moment. This is what drives you to reach your vision of who you want to be without it feeling like work. 🏋️ 🧑‍🎨 </p>
-            <p>This isn't meditation, nor is it therapy. It isn't quite personal training, either.</p>
-            <p><span style="font-weight: bold">Flex &amp; Paint is a coaching program centered around fitness for body awareness, painting for creative expression, and habit formation to replace rumination with presence.</span></p>
-            <p>If you want to reduce running thoughts and disconnection, I propose that we work together to build confidence, creativity, and a lasting fitness habit that you <span style="font-style: italic">enjoy.</span></p>
+    <!-- Testimonial Quote 1 - Jake -->
+    <div class="testimonial-quote">
+        <div class="quote-box">
+            <blockquote>
+              "I thought fitness was something that had to be painful, difficult, and grueling. [Kevin showed me] it's something that you can enjoy the fluidity and the rhythm of building it into your daily life. I can't believe here I am 8 weeks later... I've signed up for my local gym, I've been going 3 days a week, and I'm <span style="font-style: italic">enjoying</span> it."
+            </blockquote>
+            <div class="author">— <a href="#jake-testimonial">Jake</a></div>
         </div>
     </div>
 
-    <!-- Offerings Section -->
-    <div class="offerings-section" id="program">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 60px; color: #121212;">PROGRAM</h2>
-        <div class="offerings-grid">
-            <div class="offering-item">
-                <h3>8 Weeks of Online Lessons and Exercises</h3>
-            </div>
-            <div class="offering-item">
-                <h3>Weekly Group Calls</h3>
-            </div>
-            <div class="offering-item">
-                <h3>Community and Accountability</h3>
-            </div>
-            <div class="offering-item">
-                <h3>Individual Guidance</h3>
-            </div>
-        </div>
-        
-        <div class="offerings-description">
-            <p>You'll build a two sustainable practices: fitness for embodiment, and art for expression. At the end of the program, you'll understand how to stay in a state of body awareness to manage manage running thoughts, methods to iterate towards confidence and consistency, and how to lift and create for their own sake--which will make you feel connected to your outputs and your progress.</p>
-            <p>Weekly group calls keep you accountable. A supportive community reminds you that you're not alone-- these struggles are more common and approachable than you think. Personalized guidance ensures that you're making progress and that the program achieves YOUR goals.</p>
-            <p>You don't need to be fit or artistic to start. The lessons and exercises are designed for complete beginners who just want to feel connected to themselves again.</p>
-            <p>Spots are limited-- this is a small cohort of 8 max. I'm offering a unique rate for this founders cohort: <span style="font-weight: bold;">$297</span> for 8 weeks. Contact below.</p>
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h2>Ready to Start?</h2>
+        <p>Choose how you'd like to proceed:</p>
+        <div class="cta-buttons">
+            <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kev-kevinkoza/flex-and-paint-discovery'});return false;" class="cta-btn cta-btn-primary">Schedule a Discovery Call</a>
+            <a href="https://whop.com/flex-and-paint/flex-and-paint-b3/" target="_blank" class="cta-btn cta-btn-secondary">Enroll Now</a>
         </div>
     </div>
 
-    <!-- Outcomes Section -->
+    <!-- Testimonial Quote 2 - Lundyn -->
+    <div class="testimonial-quote">
+        <div class="quote-box">
+            <blockquote>
+                "I would let [running thoughts] overwhelm me to the point where I wouldn't do anything, prior to Flex & Paint. Now I've really just learned to breathe, pick one of the things I'm thinking about, do it, and I'm able to push through the rest of my day. I just wasn't happy, or as happy as I could have been. I feel like I was missing something, and I just didn't know how to get there. And that's when you came out with the program, and I was like, 'hello, this is it— this is exactly what I'm looking for!'"
+            </blockquote>
+            <div class="author">— <a href="#lundyn-testimonial">Lundyn</a></div>
+        </div>
+    </div>
+
+    <!-- Who This Is For Section -->
     <div class="outcomes-section">
-        <h2>PROGRAM AIMS</h2>
-        <div class="outcomes-grid">
-            <div class="outcome-column">
-                <h3>Primary</h3>
-                <ul>
-                    <li>Feel calmer and more grounded</li>
-                    <li>Experience more presence in your body</li>
-                    <li>Build genuine confidence</li>
-                </ul>
-            </div>
-            <div class="outcome-column">
-                <h3>Secondary</h3>
-                <ul>
-                    <li>Spend less time on screens</li>
-                    <li>Purposeful connection to your outputs</li>
-                    <li>More comfort in social situations</li>
-                </ul>
-            </div>
-            <div class="outcome-column">
-                <h3>Tertiary</h3>
-                <ul>
-                    <li>Build sustainable fitness habit with early results and long-term gains</li>
-                    <li>Foundational creative practice that's enjoyable from the get-go</li>
-                </ul>
-            </div>
+        <h2>People Claim To:</h2>
+        
+        <div class="outcomes-list">
+            <ul>
+                <li>Live in their bodies versus their heads</li>
+                <li>Overcome intimidation with weightlifting and build genuine confidence in the gym</li>
+                <li>Reduce running thoughts and find enhanced presence and mindfulness</li>
+                <li>Reduce perfectionism and prioritize movement and momentum</li>
+                <li>Build confidence and see sustainable, long-term progress without fear of "doing it wrong"</li>
+                <li>Reduce screen usage and prioritize healthy habits and actions</li>
+            </ul>
         </div>
     </div>
 
-    <!-- Choose Your Path Section -->
-    <div class="cta-section" id="schedule">
-        <h2>READY TO START?</h2>
-        <p class="cta-intro">Let's work together:</p>
-        
-        <div class="cta-grid">
-            <!-- Option 1: Schedule Call -->
-            <div class="cta-option">
-                <h3>Schedule a Discovery Call</h3>
-                <p>Let's talk about where you are and where you want to be. I'll explain exactly how the program works and answer any questions.</p>
-                <div class="calendly-inline-widget" data-url="https://calendly.com/kev-kevinkoza/flex-and-paint-discovery" style="min-width:280px;height:600px;margin-top:20px;"></div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <div class="faq-container">
+            <h2>FAQ</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Who are you?</div>
+                <div class="faq-answer">
+                    <p>👋 My name is Kevin Koza and I'm an artist and a personal trainer (certified NASM). I was a software engineer for nearly 7 years. I've been lifting for over a decade and painting since graduating college after studying computer science.</p>
+                    <p>Since then, I've realized the impact of expression and embodiment on my life. These are core tenets of my painting courses and personal training programs which fuel artistic and fitness gains for my clients. I know they're better combined, so I made this program.</p>
+                </div>
             </div>
 
-            <!-- Option 2: Get Free Guide -->
-            <div class="cta-option">
-                <h3>Get The Insights</h3>
-                <p>Not ready for a group program? Join my newsletter and I'll send you the top insights and strategies that I've used to succeed in art, fitness, and building positive habits.</p>
-                <div class="lead-form-wrapper">
-                    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-                    <form action="https://app.kit.com/forms/8745721/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8745721" data-uid="6063adf2f7" data-format="inline" data-version="5" min-width="400 500 600 700 800">
-                        <div class="formkit-background" style="opacity: 0.2;"></div>
-                        <div data-style="clean">
-                            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
-                            <div data-element="fields" data-stacked="true" class="seva-fields formkit-fields" style="display:flex;flex-direction:column;max-width:100%;margin:20px 0;">
-                                <div class="formkit-field" style="margin-bottom:15px;">
-                                    <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Your email address" required="" type="email" style="color:#121212;border:1px solid #e0e0e0;border-radius:4px;font-weight:400;padding:15px;font-size:16px;width:100%;">
-                                </div>
-                                <button data-element="submit" class="formkit-submit formkit-submit" style="color:#F5F5F5;background-color:#121212;border-radius:4px;font-weight:600;padding:15px 30px;font-size:16px;cursor:pointer;border:none;width:100%;">
-                                    <div class="formkit-spinner">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                    <span>Join and Get Guides</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Why are you doing this?</div>
+                <div class="faq-answer">
+                  <p>I think there's a lack of proper support for people who struggle with feeling anxious, disconnected, and lacking confidence. It isn't a question of more knowledge, it's about how to build a lifestyle with healthy practices as a foundation.</p>
+                  <br>
+                  <p>Beginner fitness programs are cookie-cutter and don't teach you the skills to build sustainable practices that will actually drive gains. Art courses can build techniques, but they don't articulate how to even enjoy the act of creation without judgment. Neither are viewed from the lens of <span style="font-style: italic">why</span> even lift/create in the first place-- you're directing yourself towards the healthiest, most confident, and embodied version of yourself possible.</p>
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">What will I learn how to paint? Why painting?</div>
+                <div class="faq-answer">
+                    <p>This isn't about painting techniques-- you won't learn how to paint anything in particular. At the end of the program, if you want to extend your practice, I'd be happy to help. My approach to art is 80% subjective and 20% objective-- start with how to enjoy the process, reducing friction and building consistency, and building sensations around the medium itself. Only after these foundations have been established should you approach learning "how."</p>
+                    <p>The reason that we're starting with painting is because it offers a physical medium with ample tactile and visual stimulus-- essential elements of getting out of your head.</p>
+                    <p>When you mix paint and place it on canvas, you have the opportunity for both embodiment and expression-- you can focus on the feelings of the brush or knife, how paint moves around canvas, and other sensations. You also make choices which have an impact-- the crux of expression.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Is this therapy or medical treatment?</div>
+                <div class="faq-answer">
+                    <p>No. I'm not a licensed therapist or medical professional. Flex & Paint is a coaching program that combines fitness and creative practices. While many people find it helpful for managing anxiety and improving their mental health, it's not a substitute for professional mental health care or medical treatment. If you're experiencing severe symptoms, please consult with a licensed healthcare provider.</p>
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Do I need materials?</div>
+                <div class="faq-answer">
+                  <p>Yes. This course will utilize a single kettlebell and a small painting setup. I make suggestions at Week 1.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Will I get jacked?</div>
+                <div class="faq-answer">
+                  <p>I want to put you on the path to achieve the body you desire, sustainably.</p>
+                  <br>
+                  <p>Fitness is what you make of it. My approach, again, is <span style="font-style: italic">to not initially</span> chase objective measures; the physical outcome takes time to develop (definitely more than 8 weeks).</p>
+                  <br>
+                  <p>However, you will notice changes begin to appear if you don't already have a weightlifting habit. The primary focus is on the experience-- using movement to get into your body and quiet running thoughts.</p> 
+                  <br>
+                  <p>I'm happy to tailor the program to your current fitness level. I want to set you up on your journey to get fit, embodied, expressive, and confident.</p> 
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Guarantee Section -->
-    <div class="guarantee-section">
-        <h2>GUARANTEE</h2>
-        <p>My aim is to help you build sustainable practices that support feeling more grounded, present, and emotionally connected.</p>
-        <p>If you participate in all exercises and group calls, and you don't feel you're gaining real value from the program, send me an email for a full refund-- even if it's at the very end of the program.</p>
-    </div>
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = element.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
+            
+            // Open clicked FAQ if it wasn't already open
+            if (!isActive) {
+                element.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+    </script>
 
-    <!-- FAQ Section -->
-    <div class="faq-section" id="faq">
-        <h2>FAQ</h2>
-        
-        <div class="faq-item">
-            <div class="faq-question">Is this therapy or medical treatment?</div>
-            <div class="faq-answer">
-                <p>No. I'm not a licensed therapist or medical professional. Flex & Paint is a coaching program that combines fitness and creative practices. While many people find it helpful for managing anxiety and improving their mental health, it's not a substitute for professional mental health care or medical treatment. If you're experiencing severe symptoms, please consult with a licensed healthcare provider.</p>
-            </div>
-        </div>
+    <!-- Video Testimonials Section -->
+    <div class="testimonials-section">
+        <div class="testimonials-container">
+            <h2>Testimonials</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-video" id="jake-testimonial">
+                    <h3>Jake's Story</h3>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/ObjT2YL3SeQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
 
-        <div class="faq-item">
-            <div class="faq-question">Who are you?</div>
-            <div class="faq-answer">
-              <p>👋 My name is <a href="https://www.instagram.com/koza.kevin" target="_blank">Kevin Koza</a> and I'm an artist and a personal trainer (certified NASM). I was a software engineer for nearly 7 years. I've been lifting for over a decade and painting since graduating college after studying computer science.</p><br><p>Since then, I've realized the impact of expression and embodiment on my life. These are core tenets of my painting courses and personal training programs which fuel artistic and fitness gains for my clients. I know they're better combined, so I made this program.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Why are you doing this?</div>
-            <div class="faq-answer">
-              <p>I think there's a lack of proper support for people who struggle with feeling anxious, disconnected, and lacking confidence-- and I want to provide that support. I know that my initial struggles weren't met with any level of seriousness-- I think that people feel cast away to the fringes because they're disconnected from themselves and thus from others.</p>
-              <br>
-              <p>😡 I want to provide an alternative to the mainstream approaches: medications with side effects, meditation practices that are hard to maintain, or finding community in circles that amplify anger rather than address underlying feelings and actionable strategies for growth.</p>
-              <br>
-              <p>Beginner fitness programs are cookie-cutter and don't teach you the skills to build sustainable practices that will actually drive gains. Art courses can build techniques, but they don't articulate how to even enjoy the act of creation without judgment. Neither are viewed from the lens of <span style="font-style: italic">why</span> even lift/create in the first place-- you're directing yourself towards the healthiest, most confident, and embodied version of yourself possible.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">What will I learn how to paint? Why painting?</div>
-            <div class="faq-answer">
-              <p>This isn't about painting techniques-- you won't learn how to paint anything in particular. At the end of the program, if you want to extend your practice, I'd be happy to help. My approach to art is 80% subjective and 20% objective-- start with how to enjoy the process, reducing friction and building consistency, and building sensations around the medium itself. Only after these foundations have been established should you approach learning "how."</p>
-              <br>
-              <p>The reason that we're starting with painting is because it offers a physical medium with ample tactile and visual stimulus-- essential elements of getting out of your head.</p>
-              <br>
-              <p>When you mix paint and place it on canvas, you have the opportunity for both embodiment and expression-- you can focus on the feelings of the brush or knife, how paint moves around canvas, and other sensations. You also make choices which have an impact-- the crux of expression.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Do I need materials?</div>
-            <div class="faq-answer">Yes. This course will utilize a single kettlebell and a small oil painting setup. I will make suggestions at Week 1.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Will I get jacked?</div>
-            <div class="faq-answer">
-              <p>I want to put you on the path to achieve the body you desire, sustainably.</p>
-              <br>
-              <p>Fitness is what you make of it. My approach, again, is <span style="font-style: italic">to not initially</span> chase objective measures; the physical outcome takes time to develop (definitely more than 8 weeks).</p>
-              <br>
-              <p>However, you will notice changes begin to appear if you don't already have a weightlifting habit. The primary focus is on the experience-- using movement to get into your body and quiet running thoughts.</p> 
-              <br>
-              <p>I'm happy to tailor the program to your current fitness level, and I'm available for individual coaching after the program concludes. I want to set you up on your journey to get fit, embodied, expressive, and confident.</p> 
+                <div class="testimonial-video" id="lundyn-testimonial">
+                    <h3>Lundyn's Story</h3>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/OQbShgwUgVc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

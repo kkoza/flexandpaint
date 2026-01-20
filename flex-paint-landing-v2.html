@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex & Paint - Stop Living In Your Head. Start Moving In Your Body.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #121212;
+            background-color: #F5F5F5;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #F5F5F5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-nav .name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #121212;
+        }
+
+        .top-nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .top-nav-links a {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: #121212;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav-links a:hover {
+            color: #000;
+        }
+
+        .top-nav-links a i {
+            font-size: 1.2rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 8px;
+        }
+
+        h2 {
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #111;
+            line-height: 1.1;
+        }
+
+        .hero-section .subhead {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #121212;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section .tagline {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+
+        /* Video Container */
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .primary-cta {
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+
+        .primary-cta a {
+            display: inline-block;
+            padding: 18px 40px;
+            background-color: #121212;
+            color: #F5F5F5;
+            text-decoration: none;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .primary-cta a:hover {
+            background-color: #000;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #fff;
+            padding: 80px 20px;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #121212;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: #F5F5F5;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #121212;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #121212;
+        }
+
+        .testimonial-card .author {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .testimonial-card .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #121212;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid #121212;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-card .read-more:hover {
+            opacity: 0.7;
+        }
+
+        /* Qualification Section */
+        .qualification-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .qualification-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #121212;
+        }
+
+        .qualification-section p {
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+            color: #121212;
+        }
+
+        .qualification-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .qualification-section ul li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            color: #121212;
+        }
+
+        .qualification-section ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: #121212;
+        }
+
+        /* Authority Section */
+        .authority-section {
+            background-color: #EAE6E1;
+            padding: 80px 20px;
+        }
+
+        .authority-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #121212;
+        }
+
+        .authority-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .authority-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #121212;
+        }
+
+        .authority-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .authority-content ul li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #121212;
+        }
+
+        .authority-content ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: #121212;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #121212;
+        }
+
+        .cta-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            color: #666;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cta-option {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .cta-option h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #121212;
+        }
+
+        .cta-option p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Lead Form */
+        .lead-form-wrapper {
+            margin-top: 20px;
+        }
+
+        .formkit-input {
+            color: #121212;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-weight: 400;
+            padding: 15px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .formkit-submit {
+            color: #F5F5F5;
+            background-color: #121212;
+            border-radius: 4px;
+            font-weight: 600;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .formkit-submit:hover {
+            background-color: #000;
+        }
+
+        /* Program Details Section */
+        .program-details {
+            background-color: #fff;
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .program-details h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #121212;
+        }
+
+        .program-details p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #121212;
+        }
+
+        .program-details .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .program-details .highlights div {
+            font-size: 1.05rem;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .program-details .highlights div:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+            color: #121212;
+            font-weight: bold;
+        }
+
+        .program-details .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 30px;
+            color: #121212;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: #EAE6E1;
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #121212;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .faq-question {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #121212;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-answer p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #121212;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer a {
+            color: #121212;
+            text-decoration: underline;
+        }
+
+        /* Long Testimonials Section */
+        .long-testimonials {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .long-testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #121212;
+        }
+
+        .testimonial-full {
+            background-color: #fff;
+            padding: 40px;
+            margin-bottom: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-full h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #121212;
+        }
+
+        .testimonial-full h4 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-full .section-header {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #121212;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-full p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #121212;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background-color: #121212;
+            color: #F5F5F5;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #F5F5F5;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #F5F5F5;
+        }
+
+        .final-cta a {
+            display: inline-block;
+            padding: 20px 50px;
+            background-color: #F5F5F5;
+            color: #121212;
+            text-decoration: none;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .final-cta a:hover {
+            background-color: #e0e0e0;
+        }
+
+        .final-cta .guarantee {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-section .subhead {
+                font-size: 1.2rem;
+            }
+
+            .cta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="name">KEVIN KOZA</div>
+        <div class="top-nav-links">
+            <a href="#testimonials">Testimonials</a>
+            <a href="#faq">FAQ</a>
+            <a href="#schedule">Schedule</a>
+            <a href="https://www.instagram.com/kevinkoza.fit" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>FLEX & PAINT</h1>
+        <p class="subhead">Stop Living In Your Head. Start Moving In Your Body.</p>
+        <p class="tagline">An 8-week program combining fitness and creative practice for anxious, creative people who want to feel grounded, present, and confident.</p>
+    </div>
+
+    <!-- Video Container -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/pmmHXfU-LZI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="primary-cta">
+        <a href="#schedule">SCHEDULE DISCOVERY CALL</a>
+    </div>
+
+    <!-- Short Testimonials Section -->
+    <div class="testimonials-section" id="testimonials">
+        <h2>WHAT PEOPLE ARE SAYING</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <blockquote>
+                    "I thought fitness was something that had to be painful, difficult, and grueling. [Kevin showed me] it's something that you can enjoy the fluidity and the rhythm of building it into your daily life.
+                    <br><br>
+                    I can't believe here I am 8 weeks later... I've signed up for my local gym, I've been going 3 days a week, and I'm enjoying it.
+                    <br><br>
+                    If you're someone who has always identified with the sensitive artist type who are trying to get fit, trying to get buff, but can't find where their community is for that— this is the community."
+                </blockquote>
+                <div class="author">— Jake</div>
+            </div>
+
+            <div class="testimonial-card">
+                <blockquote>
+                    "I would let [running thoughts] overwhelm me to the point where I wouldn't do anything, prior to Flex & Paint. Now I've really just learned to breathe, pick one of the things I'm thinking about, do it, and I'm able to push through the rest of my day.
+                    <br><br>
+                    I just wasn't happy, or as happy as I could have been. I feel like I was missing something, and I just didn't know how to get there. And that's when you came out with the program, and I was like, 'hello, this is it— this is exactly what I'm looking for!'"
+                </blockquote>
+                <div class="author">— Lundyn</div>
+            </div>
+        </div>
+
+        <!-- Video Testimonials -->
+        <div style="max-width: 1100px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px;">
+            <div>
+                <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; margin-bottom: 20px; text-align: center;">Jake's Story</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/ObjT2YL3SeQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div>
+                <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; margin-bottom: 20px; text-align: center;">Lundyn's Story</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/OQbShgwUgVc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Qualification Section -->
+    <div class="qualification-section">
+        <h2>IS THIS FOR YOU?</h2>
+        <p>If you don't relate to at least one of these, you can leave:</p>
+        <ul>
+            <li>You're living in your head—anxious, overthinking, running thoughts that keep you stuck—and you want to feel connected to your body instead</li>
+            <li>You've tried fitness programs but they feel aggressive, intimidating, or disconnected from who you are as a sensitive, introverted, or creative person</li>
+            <li>You want to build a consistent fitness habit and actually identify as someone who exercises, not just someone who "should" work out</li>
+            <li>You're drawn to creative expression but perfectionism and self-judgment keep you from starting or enjoying the process</li>
+            <li>You spend too much time on your phone and want to replace it with something constructive that makes you feel better</li>
+            <li>You've tried meditation or therapy but you're missing the embodied, physical tools to actually feel different in your daily life</li>
+        </ul>
+    </div>
+
+    <!-- Authority Section -->
+    <div class="authority-section">
+        <h2>WHY I BUILT THIS</h2>
+        <div class="authority-content">
+            <p>I'm Kevin Koza—artist, personal trainer (NASM certified), and former software engineer.</p>
+            
+            <p>I spent years anxious, disconnected, and numb. Fitness and painting changed that for me, but not in the way you'd expect.</p>
+            
+            <p>The mainstream approaches don't work for sensitive, creative people:</p>
+            <ul>
+                <li>Aggressive fitness programs that ignore your nervous system and make you feel worse</li>
+                <li>Art courses focused on technique and comparison, not genuine expression</li>
+                <li>Therapy and meditation that don't teach you how to actually inhabit your body</li>
+            </ul>
+            
+            <p>I built Flex & Paint because you deserve support that actually addresses the root: feeling disconnected from your body.</p>
+            
+            <p>This program combines what worked for me (and now my clients): fitness for embodiment, art for expression, community for belonging.</p>
+            
+            <p>My clients have gone from complete unfamiliarity with weightlifting to confidently signing up for gyms. They've reduced perfectionism and phone usage. They've quieted running thoughts that used to block all progress. They've built presence and consistency in both fitness and creative practices.</p>
+            
+            <p>This isn't about getting jacked or becoming a great painter. It's about feeling grounded, present, and confident in your body.</p>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section" id="schedule">
+        <h2>READY TO START?</h2>
+        <p class="cta-intro">Let's work together:</p>
+        
+        <div class="cta-grid">
+            <!-- Option 1: Schedule Call -->
+            <div class="cta-option">
+                <h3>Schedule a Discovery Call</h3>
+                <p>Let's talk about where you are and where you want to be. I'll explain exactly how the program works and answer any questions.</p>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/kev-kevinkoza/flex-and-paint-discovery" style="min-width:280px;height:600px;margin-top:20px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            </div>
+
+            <!-- Option 2: Get Free Guide -->
+            <div class="cta-option">
+                <h3>Get The Insights</h3>
+                <p>Not ready for a group program? Join my newsletter and I'll send you the top insights and strategies that I've used to succeed in art, fitness, and building positive habits.</p>
+                <div class="lead-form-wrapper">
+                    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+                    <form action="https://app.kit.com/forms/8745721/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8745721" data-uid="6063adf2f7" data-format="inline" data-version="5" min-width="400 500 600 700 800">
+                        <div class="formkit-background" style="opacity: 0.2;"></div>
+                        <div data-style="clean">
+                            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                            <div data-element="fields" data-stacked="true" class="seva-fields formkit-fields" style="display:flex;flex-direction:column;max-width:100%;margin:20px 0;">
+                                <div class="formkit-field" style="margin-bottom:15px;">
+                                    <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Your email address" required="" type="email">
+                                </div>
+                                <button data-element="submit" class="formkit-submit formkit-submit">
+                                    <div class="formkit-spinner">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <span>Join and Get Guides</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Program Details (Optional - can be removed if VSL covers) -->
+    <div class="program-details">
+        <h2>WHAT'S INCLUDED</h2>
+        <p>8 weeks. Small cohort (8 max). $297 for founders cohort.</p>
+        
+        <div class="highlights">
+            <div>Weekly online lessons and exercises</div>
+            <div>Weekly group calls for accountability</div>
+            <div>Personalized 1:1 guidance</div>
+            <div>Private community of like-minded people</div>
+            <div>Full refund guarantee if you participate and don't see value</div>
+        </div>
+        
+        <p>You don't need to be fit or artistic to start. The program is designed for complete beginners.</p>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section" id="faq">
+        <h2>FAQ</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Is this therapy or medical treatment?</div>
+            <div class="faq-answer">
+                <p>No. I'm not a licensed therapist or medical professional. Flex & Paint is a coaching program that combines fitness and creative practices. While many people find it helpful for managing anxiety and improving their mental health, it's not a substitute for professional mental health care or medical treatment. If you're experiencing severe symptoms, please consult with a licensed healthcare provider.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do I need to be fit or artistic?</div>
+            <div class="faq-answer">
+                <p>No. This is designed for complete beginners. The focus is on experience and consistency, not technique or performance. My clients have ranged from complete unfamiliarity with weightlifting to occasional gym-goers looking for more consistency. The same goes for art—you'll learn to enjoy the process, not chase perfection.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What will I actually do each week?</div>
+            <div class="faq-answer">
+                <p>You'll practice body awareness exercises, simple fitness movements (starting with holding weights and progressing from there), creative expression through painting, morning and night pages for mental clarity, and weekly group calls for support and accountability. Everything is tailored to your current level and your unique goals.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Why painting specifically?</div>
+            <div class="faq-answer">
+                <p>This isn't about learning painting techniques. Painting offers a physical medium with ample tactile and visual stimulus—essential elements of getting out of your head. When you mix paint and place it on canvas, you have the opportunity for both embodiment (focusing on sensations, how paint moves) and expression (making choices that have impact). My approach is 80% subjective, 20% objective—start with enjoying the process, reducing friction, and building consistency. Only after these foundations should you approach learning "how."</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Will I get jacked?</div>
+            <div class="faq-answer">
+                <p>I want to put you on the path to achieve the body you desire, sustainably. My approach is to not initially chase objective measures; the physical outcome takes time to develop (definitely more than 8 weeks). However, you will notice changes begin to appear if you don't already have a weightlifting habit. The primary focus is on the experience—using movement to get into your body and quiet running thoughts. I'm happy to tailor the program to your current fitness level, and I'm available for individual coaching after the program concludes.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What materials do I need?</div>
+            <div class="faq-answer">
+                <p>One kettlebell and a small oil painting setup. I'll provide specific recommendations in Week 1.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Who are you?</div>
+            <div class="faq-answer">
+                <p>👋 My name is <a href="https://www.instagram.com/koza.kevin" target="_blank">Kevin Koza</a> and I'm an artist and a personal trainer (certified NASM). I was a software engineer for nearly 7 years. I've been lifting for over a decade and painting since graduating college after studying computer science.</p>
+                <p>Since then, I've realized the impact of expression and embodiment on my life. These are core tenets of my painting courses and personal training programs which fuel artistic and fitness gains for my clients. I know they're better combined, so I made this program.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Why are you doing this?</div>
+            <div class="faq-answer">
+                <p>I think there's a lack of proper support for people who struggle with feeling anxious, disconnected, and lacking confidence— and I want to provide that support. I know that my initial struggles weren't met with any level of seriousness— I think that people feel cast away to the fringes because they're disconnected from themselves and thus from others.</p>
+                <p>😡 I want to provide an alternative to the mainstream approaches: medications with side effects, meditation practices that are hard to maintain, or finding community in circles that amplify anger rather than address underlying feelings and actionable strategies for growth.</p>
+                <p>Beginner fitness programs are cookie-cutter and don't teach you the skills to build sustainable practices that will actually drive gains. Art courses can build techniques, but they don't articulate how to even enjoy the act of creation without judgment. Neither are viewed from the lens of <em>why</em> even lift/create in the first place— you're directing yourself towards the healthiest, most confident, and embodied version of yourself possible.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="final-cta">
+        <h2>JOIN THE NEXT COHORT</h2>
+        <p>Limited to 8 people. Founders rate: $297 for 8 weeks.</p>
+        <a href="#schedule">SCHEDULE DISCOVERY CALL</a>
+        <p class="guarantee">Full refund guarantee. No risk.</p>
+    </div>
+
+</body>
+</html>
