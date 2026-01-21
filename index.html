@@ -105,21 +105,36 @@
 
         .quote-box .author {
             font-family: 'Barlow Condensed', sans-serif;
+            text-decoration: underline;
             font-weight: 600;
             font-size: 1rem;
             color: #666;
-            text-align: right;
+            text-align: center;
         }
 
-        .quote-box .author a {
-            color: #121212;
+        .author-link {
+            display: block;
             text-decoration: none;
-            border-bottom: 2px solid #121212;
+            text-align: center;
             transition: opacity 0.3s ease;
         }
 
-        .quote-box .author a:hover {
+        .author-link:hover {
             opacity: 0.7;
+        }
+
+        .author-link:hover .author {
+            color: #121212;
+        }
+
+        .testimonial-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto 10px;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
         /* CTA Section */
@@ -424,9 +439,12 @@
     <div class="testimonial-quote">
         <div class="quote-box">
             <blockquote>
-              "I thought fitness was something that had to be painful, difficult, and grueling. [Kevin showed me] it's something that you can enjoy the fluidity and the rhythm of building it into your daily life. <br><brI can't believe here I am 8 weeks later... I've signed up for my local gym, I've been going 3 days a week, and I'm <span style="font-style: italic">enjoying</span> it."
+              "I thought fitness was something that had to be painful, difficult, and grueling. [Kevin showed me] it's something that you can enjoy the fluidity and the rhythm of building it into your daily life. <br><br>I can't believe here I am 8 weeks later... I've signed up for my local gym, I've been going 3 days a week, and I'm <span style="font-style: italic">enjoying</span> it."
             </blockquote>
-            <div class="author">— <a href="#jake-testimonial">Jake</a></div>
+            <a href="#jake-testimonial" class="author-link">
+                <img src="jake.png" alt="Jake" class="testimonial-thumb">
+                <div class="author">— Jake</div>
+            </a>
         </div>
     </div>
 
@@ -445,7 +463,10 @@
             <blockquote>
               "I would let [running thoughts] overwhelm me to the point where I wouldn't do anything, prior to Flex & Paint. Now I've really just learned to breathe, pick one of the things I'm thinking about, do it, and I'm able to push through the rest of my day. <br><br>I just wasn't happy, or as happy as I could have been. I feel like I was missing something, and I just didn't know how to get there. And that's when you came out with the program, and I was like, 'hello, this is it— this is exactly what I'm looking for!'"
             </blockquote>
-            <div class="author">— <a href="#lundyn-testimonial">Lundyn</a></div>
+            <a href="#lundyn-testimonial" class="author-link">
+                <img src="lundyn.png" alt="Lundyn" class="testimonial-thumb">
+                <div class="author">— Lundyn</div>
+            </a>
         </div>
     </div>
 
