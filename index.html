@@ -754,20 +754,32 @@
             const form = document.querySelector('.newsletter-form');
             const successMessage = document.querySelector('.newsletter-success-message');
             const formFields = document.querySelector('.newsletter-form-fields');
+            const emailInput = document.querySelector('.newsletter-input');
             
             if (form) {
                 form.addEventListener('submit', function(e) {
-                    // Wait a moment for the form to actually submit
-                    setTimeout(function() {
-                        // Hide the form fields
+                    e.preventDefault(); // Prevent default form submission
+                    
+                    // Validate email
+                    if (emailInput && emailInput.value && emailInput.validity.valid) {
+                        // Submit the form data to ConvertKit via fetch
+                        const formData = new FormData();
+                        formData.append('email_address', emailInput.value);
+                        
+                        fetch('https://app.kit.com/forms/8745721/subscriptions', {
+                            method: 'POST',
+                            body: formData,
+                            mode: 'no-cors' // This allows the request to go through without CORS issues
+                        });
+                        
+                        // Immediately show success message
                         if (formFields) {
                             formFields.style.display = 'none';
                         }
-                        // Show success message
                         if (successMessage) {
                             successMessage.style.display = 'block';
                         }
-                    }, 500);
+                    }
                 });
             }
         });
