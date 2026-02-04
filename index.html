@@ -321,6 +321,18 @@
             display: none !important;
         }
 
+        /* Hide ConvertKit's native form */
+        .formkit-form[data-uid="6063adf2f7"],
+        .seva-form[data-uid="6063adf2f7"],
+        form.formkit-form {
+            display: none !important;
+        }
+
+        /* Keep our custom newsletter form visible */
+        .newsletter-section .newsletter-form {
+            display: block !important;
+        }
+
         .newsletter-success-message {
             margin-top: 20px;
             padding: 15px 24px;
