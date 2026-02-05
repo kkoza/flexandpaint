@@ -321,16 +321,30 @@
             display: none !important;
         }
 
-        /* Hide ConvertKit's native form */
+        /* Hide ConvertKit's native form - aggressive rules */
         .formkit-form[data-uid="6063adf2f7"],
         .seva-form[data-uid="6063adf2f7"],
-        form.formkit-form {
+        form.formkit-form,
+        .formkit-form,
+        [data-uid="6063adf2f7"].formkit-form,
+        div.formkit-form[data-uid="6063adf2f7"] {
             display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
+            position: absolute !important;
+            left: -9999px !important;
         }
 
         /* Keep our custom newsletter form visible */
         .newsletter-section .newsletter-form {
             display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+            left: auto !important;
         }
 
         .newsletter-success-message {
@@ -756,6 +770,24 @@
             const formFields = document.querySelector('.newsletter-form-fields');
             const emailInput = document.querySelector('.newsletter-input');
             
+            // Function to hide all ConvertKit native forms
+            function hideConvertKitForms() {
+                const ckForms = document.querySelectorAll('.formkit-form[data-uid="6063adf2f7"], .seva-form[data-uid="6063adf2f7"], div.formkit-form');
+                ckForms.forEach(function(ckForm) {
+                    if (!ckForm.classList.contains('newsletter-form')) {
+                        ckForm.style.display = 'none';
+                        ckForm.style.visibility = 'hidden';
+                        ckForm.style.opacity = '0';
+                        ckForm.style.position = 'absolute';
+                        ckForm.style.left = '-9999px';
+                    }
+                });
+            }
+            
+            // Hide ConvertKit forms immediately and periodically
+            hideConvertKitForms();
+            setInterval(hideConvertKitForms, 500);
+            
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission
@@ -793,6 +825,8 @@
                                 formFields.style.display = 'none';
                                 formFields.style.visibility = 'hidden';
                             }
+                            // Hide any ConvertKit forms that might have appeared
+                            hideConvertKitForms();
                         }, 100);
                         
                         // Keep enforcing visibility for a few seconds
@@ -805,6 +839,8 @@
                                 formFields.style.display = 'none';
                                 formFields.style.visibility = 'hidden';
                             }
+                            // Keep hiding ConvertKit forms
+                            hideConvertKitForms();
                         }, 200);
                         
                         // Stop enforcing after 3 seconds (it should be stable by then)
