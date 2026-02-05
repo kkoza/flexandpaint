@@ -347,6 +347,24 @@
             left: auto !important;
         }
 
+        /* New separate success message styling */
+        #newsletter-success-wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto 0 auto;
+        }
+
+        #custom-success-message {
+            padding: 20px 30px;
+            background-color: rgba(16, 191, 122, 0.2);
+            border: 2px solid rgba(16, 191, 122, 0.6);
+            border-radius: 4px;
+            color: #F5F5F5;
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
         .newsletter-success-message {
             margin-top: 20px;
             padding: 15px 24px;
@@ -733,16 +751,21 @@
         <h2>Subscribe for updates</h2>
         <p>Get the guides to stop overthinking art and fitness</p>
         
-        <form action="https://app.kit.com/forms/8745721/subscriptions" class="newsletter-form" method="post" data-sv-form="8745721" data-uid="6063adf2f7" data-format="inline" data-version="5" data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"","redirect_url":""}}}'>
-            <div class="newsletter-form-fields">
-                <input class="newsletter-input" name="email_address" aria-label="Email Address" placeholder="Enter your email" required type="email">
-                <button type="submit" class="newsletter-submit">Get the guides</button>
-            </div>
-            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
-            <div class="newsletter-success-message" style="display: none;">
+        <div id="newsletter-success-wrapper" style="display: none; margin-top: 20px;">
+            <div id="custom-success-message">
                 ✓ Thanks! Check your email for the guide.
             </div>
-        </form>
+        </div>
+        
+        <div id="newsletter-form-wrapper">
+            <form action="https://app.kit.com/forms/8745721/subscriptions" class="newsletter-form" method="post" data-sv-form="8745721" data-uid="6063adf2f7" data-format="inline" data-version="5" data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"","redirect_url":""}}}'>
+                <div class="newsletter-form-fields">
+                    <input class="newsletter-input" name="email_address" aria-label="Email Address" placeholder="Enter your email" required type="email">
+                    <button type="submit" class="newsletter-submit">Get the guides</button>
+                </div>
+                <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+            </form>
+        </div>
     </div>
 
     <script>
@@ -766,8 +789,8 @@
         // Handle newsletter form submission
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('.newsletter-form');
-            const successMessage = document.querySelector('.newsletter-success-message');
-            const formFields = document.querySelector('.newsletter-form-fields');
+            const successWrapper = document.getElementById('newsletter-success-wrapper');
+            const formWrapper = document.getElementById('newsletter-form-wrapper');
             const emailInput = document.querySelector('.newsletter-input');
             
             // Function to hide all ConvertKit native forms
@@ -802,54 +825,45 @@
                         fetch('https://app.kit.com/forms/8745721/subscriptions', {
                             method: 'POST',
                             body: formData,
-                            mode: 'no-cors' // This allows the request to go through without CORS issues
+                            mode: 'no-cors'
                         });
                         
-                        // Immediately show success message and hide form
-                        if (formFields) {
-                            formFields.style.display = 'none';
-                            formFields.style.visibility = 'hidden';
+                        // Hide form wrapper and show success message
+                        if (formWrapper) {
+                            formWrapper.style.display = 'none';
                         }
-                        if (successMessage) {
-                            successMessage.style.display = 'block';
-                            successMessage.style.visibility = 'visible';
+                        if (successWrapper) {
+                            successWrapper.style.display = 'block';
                         }
                         
-                        // Ensure success message stays visible even if something tries to hide it
+                        // Aggressively enforce visibility
                         setTimeout(function() {
-                            if (successMessage) {
-                                successMessage.style.display = 'block';
-                                successMessage.style.visibility = 'visible';
+                            if (formWrapper) {
+                                formWrapper.style.display = 'none';
                             }
-                            if (formFields) {
-                                formFields.style.display = 'none';
-                                formFields.style.visibility = 'hidden';
+                            if (successWrapper) {
+                                successWrapper.style.display = 'block';
                             }
-                            // Hide any ConvertKit forms that might have appeared
                             hideConvertKitForms();
                         }, 100);
                         
-                        // Keep enforcing visibility for a few seconds
+                        // Keep enforcing for 3 seconds
                         const keepVisible = setInterval(function() {
-                            if (successMessage) {
-                                successMessage.style.display = 'block';
-                                successMessage.style.visibility = 'visible';
+                            if (formWrapper) {
+                                formWrapper.style.display = 'none';
                             }
-                            if (formFields) {
-                                formFields.style.display = 'none';
-                                formFields.style.visibility = 'hidden';
+                            if (successWrapper) {
+                                successWrapper.style.display = 'block';
                             }
-                            // Keep hiding ConvertKit forms
                             hideConvertKitForms();
                         }, 200);
                         
-                        // Stop enforcing after 3 seconds (it should be stable by then)
                         setTimeout(function() {
                             clearInterval(keepVisible);
                         }, 3000);
                     }
                     
-                    return false; // Extra safeguard to prevent form submission
+                    return false;
                 });
             }
         });
