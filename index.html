@@ -759,6 +759,7 @@
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission
+                    e.stopPropagation(); // Stop event from bubbling up
                     
                     // Validate email
                     if (emailInput && emailInput.value && emailInput.validity.valid) {
@@ -772,14 +773,47 @@
                             mode: 'no-cors' // This allows the request to go through without CORS issues
                         });
                         
-                        // Immediately show success message
+                        // Immediately show success message and hide form
                         if (formFields) {
                             formFields.style.display = 'none';
+                            formFields.style.visibility = 'hidden';
                         }
                         if (successMessage) {
                             successMessage.style.display = 'block';
+                            successMessage.style.visibility = 'visible';
                         }
+                        
+                        // Ensure success message stays visible even if something tries to hide it
+                        setTimeout(function() {
+                            if (successMessage) {
+                                successMessage.style.display = 'block';
+                                successMessage.style.visibility = 'visible';
+                            }
+                            if (formFields) {
+                                formFields.style.display = 'none';
+                                formFields.style.visibility = 'hidden';
+                            }
+                        }, 100);
+                        
+                        // Keep enforcing visibility for a few seconds
+                        const keepVisible = setInterval(function() {
+                            if (successMessage) {
+                                successMessage.style.display = 'block';
+                                successMessage.style.visibility = 'visible';
+                            }
+                            if (formFields) {
+                                formFields.style.display = 'none';
+                                formFields.style.visibility = 'hidden';
+                            }
+                        }, 200);
+                        
+                        // Stop enforcing after 3 seconds (it should be stable by then)
+                        setTimeout(function() {
+                            clearInterval(keepVisible);
+                        }, 3000);
                     }
+                    
+                    return false; // Extra safeguard to prevent form submission
                 });
             }
         });
